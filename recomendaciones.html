@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Viejo Medieval - Reseñas</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <style>
+        body {
+            background-color: #f8f3e9;
+            font-family: 'Roboto', sans-serif;
+        }
+        .medieval-heading {
+            font-family: 'Roboto', serif;
+            font-weight: 700;
+            color: #6a1b0a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .wine-red {
+            color: #6a1b0a;
+        }
+        .medieval-bg {
+            background-color: #f2e8d5;
+            border: 1px solid #d9c7a7;
+        }
+        .header-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .header-ornament:before, .header-ornament:after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background: #b85c38;
+            margin: 0 15px;
+        }
+        .ornament-icon {
+            font-size: 1.5rem;
+            color: #b85c38;
+        }
+        .review-card {
+            border-left: 5px solid #b85c38;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        .rating-wine {
+            color: #b85c38;
+            font-size: 1.2rem;
+        }
+        .review-form {
+            background-image: url('/api/placeholder/600/200');
+            background-size: cover;
+            background-position: center;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .review-form:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(184, 92, 56, 0.8);
+            z-index: 0;
+        }
+        .form-content {
+            position: relative;
+            z-index: 1;
+            padding: 30px;
+            color: #fff;
+        }
+        .medieval-btn {
+            background-color: #472c1b;
+            color: #f2e8d5;
+            border: 1px solid #2c1a10;
+            transition: all 0.3s ease;
+        }
+        .medieval-btn:hover {
+            background-color: #6a1b0a;
+            color: #f2e8d5;
+        }
+        .medieval-input {
+            background-color: rgba(255,255,255,0.9);
+            border: 1px solid #d9c7a7;
+        }
+        .section-heading {
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-heading:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #b85c38;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success logo h1" href="index.html">El Viejo Medieval</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="reviews.html">Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Banner de Reseñas -->
+    <div class="container-fluid py-5" style="background-image: url('/api/placeholder/1200/300'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 text-white medieval-heading" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Reseñas de Nuestros Vinos</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo de Recomendaciones y Reseñas -->
+    <section id="reviews-section" class="container my-5">
+        <div class="header-ornament">
+            <span class="ornament-icon">🍷</span>
+        </div>
+        <h2 class="text-center medieval-heading section-heading mb-4">Opiniones de Nuestros Comensales</h2>
+        <p class="text-center mb-5">Descubre lo que dicen quienes han probado nuestras selectas cosechas y maridajes medievales.</p>
+        
+        <!-- Lista de Reseñas -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div id="reviews-list" class="row g-4"></div>
+            </div>
+        </div>
+        
+        <!-- Formulario para agregar una reseña -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card review-form rounded-3 overflow-hidden">
+                    <div class="form-content">
+                        <h3 class="text-center text-white mb-4">¿Has probado nuestros vinos?</h3>
+                        <p class="text-center text-white mb-4">Comparte tu experiencia con otros amantes del buen vino</p>
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-white">Tu nombre</label>
+                            <input type="text" id="reviewer-name" class="form-control medieval-input" placeholder="¿Cómo te llamas, noble catador?" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-white">Tu reseña</label>
+                            <textarea id="review-text" class="form-control medieval-input" rows="4" placeholder="Cuéntanos tu experiencia con nuestros vinos..." required></textarea>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label text-white">Calificación</label>
+                            <select id="review-rating" class="form-select medieval-input">
+                                <option value="5">⭐⭐⭐⭐⭐ (Excelente)</option>
+                                <option value="4">⭐⭐⭐⭐ (Muy bueno)</option>
+                                <option value="3">⭐⭐⭐ (Bueno)</option>
+                                <option value="2">⭐⭐ (Regular)</option>
+                                <option value="1">⭐ (Necesita mejorar)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button onclick="addReview()" class="btn medieval-btn btn-lg">Publicar Reseña</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 El Viejo Medieval. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadReviews();
+        });
+
+        function addReview() {
+            let name = document.getElementById("reviewer-name").value;
+            let text = document.getElementById("review-text").value;
+            let rating = document.getElementById("review-rating").value;
+            
+            if (name && text) {
+                let review = { 
+                    name, 
+                    text, 
+                    rating,
+                    date: new Date().toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    })
+                };
+                let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+                reviews.push(review);
+                localStorage.setItem("reviews", JSON.stringify(reviews));
+                
+                // Limpiar el formulario
+                document.getElementById("reviewer-name").value = "";
+                document.getElementById("review-text").value = "";
+                document.getElementById("review-rating").value = "5";
+                
+                loadReviews();
+                
+                // Mostrar confirmación
+                alert("¡Gracias por compartir tu reseña! Tu opinión es muy importante para nosotros.");
+            } else {
+                alert("Por favor, completa todos los campos necesarios.");
+            }
+        }
+
+        function loadReviews() {
+            let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+            let container = document.getElementById("reviews-list");
+            container.innerHTML = "";
+            
+            if (reviews.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12">
+                        <div class="card p-4 text-center medieval-bg">
+                            <p class="mb-0">Sé el primero en compartir tu experiencia con nuestros vinos medievales.</p>
+                        </div>
+                    </div>`;
+                return;
+            }
+            
+            reviews.forEach(review => {
+                let stars = "";
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= review.rating) {
+                        stars += '<span class="rating-wine">★</span>';
+                    } else {
+                        stars += '<span class="text-muted">★</span>';
+                    }
+                }
+                
+                let reviewItem = `
+                <div class="col-md-6">
+                    <div class="card review-card p-4 h-100">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h5 class="wine-red mb-0">${review.name}</h5>
+                            <div>${stars}</div>
+                        </div>
+                        <p class="text-muted small">${review.date || "Fecha no disponible"}</p>
+                        <p class="mb-0">${review.text}</p>
+                    </div>
+                </div>`;
+                container.innerHTML += reviewItem;
+            });
+        }
+    </script>
+</body>
+</html>
