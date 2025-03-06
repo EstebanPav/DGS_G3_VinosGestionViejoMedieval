@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Viejo Medieval - Notificaciones y Recomendaciones</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <style>
+        body {
+            background-color: #f8f3e9;
+            font-family: 'Roboto', sans-serif;
+        }
+        .medieval-heading {
+            font-family: 'Roboto', serif;
+            font-weight: 700;
+            color: #6a1b0a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .wine-red {
+            color: #6a1b0a;
+        }
+        .medieval-bg {
+            background-color: #f2e8d5;
+            border: 1px solid #d9c7a7;
+        }
+        .header-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .header-ornament:before, .header-ornament:after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background: #b85c38;
+            margin: 0 15px;
+        }
+        .ornament-icon {
+            font-size: 1.5rem;
+            color: #b85c38;
+        }
+        .medieval-card {
+            border-left: 5px solid #b85c38;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .medieval-card:hover {
+            transform: translateY(-5px);
+        }
+        .section-heading {
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-heading:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #b85c38;
+        }
+        .medieval-btn {
+            background-color: #472c1b;
+            color: #f2e8d5;
+            border: 1px solid #2c1a10;
+            transition: all 0.3s ease;
+        }
+        .medieval-btn:hover {
+            background-color: #6a1b0a;
+            color: #f2e8d5;
+        }
+        .medieval-input {
+            background-color: rgba(255,255,255,0.9);
+            border: 1px solid #d9c7a7;
+        }
+        .notification-badge {
+            display: inline-block;
+            background-color: #b85c38;
+            color: white;
+            font-size: 0.8rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+        }
+        .recommendation-card {
+            border: 1px solid #d9c7a7;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .recommendation-img {
+            height: 180px;
+            object-fit: cover;
+        }
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        .medieval-toast {
+            background-color: #f2e8d5;
+            border-left: 5px solid #b85c38;
+        }
+        .preference-tag {
+            background-color: #6a1b0a;
+            color: white;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        .notification-card {
+            position: relative;
+            border-left: 5px solid #b85c38;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .notification-card.unread {
+            border-left-color: #6a1b0a;
+            background-color: #f8efe3;
+        }
+        .notification-card .unread-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #b85c38;
+        }
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f2e8d5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        .preference-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .preference-checkbox {
+            display: none;
+        }
+        .preference-label {
+            background-color: #f2e8d5;
+            border: 1px solid #d9c7a7;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .preference-checkbox:checked + .preference-label {
+            background-color: #6a1b0a;
+            color: white;
+            border-color: #6a1b0a;
+        }
+        /* Popup estilos */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+        }
+        .popup-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f8f3e9;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6a1b0a;
+        }
+        .popup-img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success logo h1" href="index.html">El Viejo Medieval</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="notifications.html">Notificaciones <span class="notification-badge">3</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Banner -->
+    <div class="container-fluid py-5" style="background-image: url('/api/placeholder/1200/300'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 text-white medieval-heading" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Notificaciones y Recomendaciones</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container para notificaciones emergentes -->
+    <div class="toast-container">
+        <!-- Las notificaciones se generarán dinámicamente aquí -->
+    </div>
+    
+    <!-- Popup de promoción -->
+    <div id="promotion-popup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <img src="/api/placeholder/460/230" alt="Promoción especial" class="popup-img">
+            <h4 class="wine-red">¡Oferta especial!</h4>
+            <p>Aprovecha nuestra promoción de fin de semana: 20% de descuento en nuestra selección de vinos tintos reserva.</p>
+            <div class="d-grid">
+                <button id="popup-action" class="btn medieval-btn">Ver promoción</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo Principal -->
+    <section class="container my-5">
+        <div class="row">
+            <!-- Columna izquierda: Preferencias y configuración -->
+            <div class="col-lg-4 mb-4">
+                <div class="card medieval-bg p-4">
+                    <h4 class="medieval-heading">Mis Preferencias</h4>
+                    <p class="text-muted mb-4">Personaliza tus notificaciones según tus gustos vinícolas</p>
+                    
+                    <h6 class="mb-3">Tipo de vino</h6>
+                    <div class="preference-selector">
+                        <input type="checkbox" id="pref-tinto" class="preference-checkbox" checked>
+                        <label for="pref-tinto" class="preference-label">Tinto</label>
+                        
+                        <input type="checkbox" id="pref-blanco" class="preference-checkbox" checked>
+                        <label for="pref-blanco" class="preference-label">Blanco</label>
+                        
+                        <input type="checkbox" id="pref-rosado" class="preference-checkbox">
+                        <label for="pref-rosado" class="preference-label">Rosado</label>
+                        
+                        <input type="checkbox" id="pref-espumoso" class="preference-checkbox">
+                        <label for="pref-espumoso" class="preference-label">Espumoso</label>
+                    </div>
+                    
+                    <h6 class="mb-3">Origen</h6>
+                    <div class="preference-selector">
+                        <input type="checkbox" id="origin-rioja" class="preference-checkbox" checked>
+                        <label for="origin-rioja" class="preference-label">Rioja</label>
+                        
+                        <input type="checkbox" id="origin-ribera" class="preference-checkbox" checked>
+                        <label for="origin-ribera" class="preference-label">Ribera del Duero</label>
+                        
+                        <input type="checkbox" id="origin-navarra" class="preference-checkbox">
+                        <label for="origin-navarra" class="preference-label">Navarra</label>
+                        
+                        <input type="checkbox" id="origin-bierzo" class="preference-checkbox">
+                        <label for="origin-bierzo" class="preference-label">Bierzo</label>
+                    </div>
+                    
+                    <h6 class="mb-3">Rango de precio</h6>
+                    <input type="range" class="form-range mb-2" min="0" max="100" value="50" id="price-range">
+                    <div class="d-flex justify-content-between">
+                        <span>10$</span>
+                        <span>100$+</span>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <h4 class="medieval-heading mb-3">Notificaciones Push</h4>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" id="push-enabled" checked>
+                        <label class="form-check-label" for="push-enabled">Activar notificaciones push</label>
+                    </div>
+                    
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="notify-promos" checked>
+                        <label class="form-check-label" for="notify-promos">Promociones especiales</label>
+                    </div>
+                    
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="notify-events" checked>
+                        <label class="form-check-label" for="notify-events">Eventos y catas</label>
+                    </div>
+                    
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="notify-recs">
+                        <label class="form-check-label" for="notify-recs">Recomendaciones personalizadas</label>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button class="btn medieval-btn" id="save-preferences">Guardar Preferencias</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna derecha: Notificaciones y Recomendaciones -->
+            <div class="col-lg-8">
+                <!-- Pestaña de Notificaciones -->
+                <div class="card medieval-bg p-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="medieval-heading mb-0">Mis Notificaciones</h4>
+                        <button class="btn btn-sm medieval-btn" id="mark-all-read">Marcar todo como leído</button>
+                    </div>
+                    
+                    <div id="notifications-container">
+                        <!-- Notificación 1 -->
+                        <div class="card notification-card unread p-3">
+                            <div class="unread-indicator"></div>
+                            <div class="d-flex">
+                                <div class="notification-icon">🍷</div>
+                                <div>
+                                    <h5 class="wine-red">Oferta especial de fin de semana</h5>
+                                    <p class="mb-1">Disfruta de un 20% de descuento en nuestra selección de vinos tintos reserva.</p>
+                                    <p class="text-muted small mb-0">Hace 2 horas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Notificación 2 -->
+                        <div class="card notification-card unread p-3">
+                            <div class="unread-indicator"></div>
+                            <div class="d-flex">
+                                <div class="notification-icon">🍇</div>
+                                <div>
+                                    <h5 class="wine-red">Nueva llegada: Rioja Reserva 2018</h5>
+                                    <p class="mb-1">Basado en tus preferencias, creemos que te gustará esta nueva adición a nuestro catálogo.</p>
+                                    <p class="text-muted small mb-0">Hace 1 día</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Notificación 3 -->
+                        <div class="card notification-card unread p-3">
+                            <div class="unread-indicator"></div>
+                            <div class="d-flex">
+                                <div class="notification-icon">🎭</div>
+                                <div>
+                                    <h5 class="wine-red">Evento de cata: Vinos del Medievo</h5>
+                                    <p class="mb-1">Te invitamos a nuestra próxima cata temática este viernes a las 19:00h.</p>
+                                    <p class="text-muted small mb-0">Hace 2 días</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Notificación 4 -->
+                        <div class="card notification-card p-3">
+                            <div class="d-flex">
+                                <div class="notification-icon">🏆</div>
+                                <div>
+                                    <h5 class="wine-red">¡Gracias por tu compra!</h5>
+                                    <p class="mb-1">Esperamos que disfrutes de tu selección. Nos encantaría conocer tu opinión.</p>
+                                    <p class="text-muted small mb-0">Hace 5 días</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recomendaciones personalizadas -->
+                <div class="card medieval-bg p-4">
+                    <div class="header-ornament">
+                        <span class="ornament-icon">🔍</span>
+                    </div>
+                    <h4 class="medieval-heading section-heading text-center mb-4">Recomendaciones para ti</h4>
+                    <p class="text-center mb-4">Basado en tus preferencias y compras anteriores</p>
+                    
+                    <div class="row g-4">
+                        <!-- Recomendación 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card recommendation-card h-100">
+                                <img src="/api/placeholder/500/300" class="recommendation-img" alt="Vino recomendado">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="wine-red mb-0">Ribera del Duero Crianza</h5>
+                                        <span class="badge bg-danger">-15%</span>
+                                    </div>
+                                    <p class="text-muted mb-3">Intenso, con notas de frutos rojos y especias.</p>
+                                    <div class="mb-3">
+                                        <span class="preference-tag">Tinto</span>
+                                        <span class="preference-tag">Ribera</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="text-decoration-line-through text-muted">24.95$</span>
+                                            <span class="ms-2 fw-bold">21.95$</span>
+                                        </div>
+                                        <button class="btn btn-sm medieval-btn">Añadir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recomendación 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card recommendation-card h-100">
+                                <img src="/api/placeholder/500/300" class="recommendation-img" alt="Vino recomendado">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="wine-red mb-0">Rioja Reserva 2018</h5>
+                                        <span class="badge bg-success">Nuevo</span>
+                                    </div>
+                                    <p class="text-muted mb-3">Elegante y equilibrado, con taninos suaves.</p>
+                                    <div class="mb-3">
+                                        <span class="preference-tag">Tinto</span>
+                                        <span class="preference-tag">Rioja</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fw-bold">29.95$</span>
+                                        </div>
+                                        <button class="btn btn-sm medieval-btn">Añadir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recomendación 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card recommendation-card h-100">
+                                <img src="/api/placeholder/500/300" class="recommendation-img" alt="Vino recomendado">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="wine-red mb-0">Albariño Gallego</h5>
+                                    </div>
+                                    <p class="text-muted mb-3">Fresco y aromático, perfecto para mariscos.</p>
+                                    <div class="mb-3">
+                                        <span class="preference-tag">Blanco</span>
+                                        <span class="preference-tag">Galicia</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fw-bold">18.50$</span>
+                                        </div>
+                                        <button class="btn btn-sm medieval-btn">Añadir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recomendación 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card recommendation-card h-100">
+                                <img src="/api/placeholder/500/300" class="recommendation-img" alt="Vino recomendado">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="wine-red mb-0">Pack Medieval</h5>
+                                        <span class="badge bg-warning text-dark">Popular</span>
+                                    </div>
+                                    <p class="text-muted mb-3">Selección especial de vinos para acompañar platos medievales.</p>
+                                    <div class="mb-3">
+                                        <span class="preference-tag">Tinto</span>
+                                        <span class="preference-tag">Set</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fw-bold">49.95$</span>
+                                        </div>
+                                        <button class="btn btn-sm medieval-btn">Añadir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 El Viejo Medieval. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar popup de promoción después de 3 segundos
+            setTimeout(function() {
+                document.getElementById('promotion-popup').style.display = 'block';
+            }, 3000);
+            
+            // Cerrar popup al hacer clic en X
+            document.querySelector('.close-popup').addEventListener('click', function() {
+                document.getElementById('promotion-popup').style.display = 'none';
+            });
+            
+            // Cerrar popup al hacer clic en el botón
+            document.getElementById('popup-action').addEventListener('click', function() {
+                document.getElementById('promotion-popup').style.display = 'none';
+                showToast('Has sido redirigido a nuestra promoción especial');
+            });
+            
+            // Simular notificación push después de 15 segundos
+            setTimeout(function() {
+                if(document.getElementById('push-enabled').checked) {
+                    showToast('🎁 ¡Nueva oferta exclusiva para miembros!', 'Descubre nuestros vinos premiados con 20% de descuento.');
+                }
+            }, 15000);
+            
+            // Guardar preferencias
+            document.getElementById('save-preferences').addEventListener('click', function() {
+                showToast('✅ Preferencias guardadas', 'Tus notificaciones han sido personalizadas según tus gustos.');
+                
+                // Simular que se solicitan permisos para notificaciones push
+                if(document.getElementById('push-enabled').checked) {
+                    // En un caso real, aquí se solicitarían los permisos del navegador
+                    console.log('Solicitando permisos para notificaciones push...');
+                }
+            });
+            
+            // Marcar todas las notificaciones como leídas
+            document.getElementById('mark-all-read').addEventListener('click', function() {
+                document.querySelectorAll('.notification-card.unread').forEach(function(card) {
+                    card.classList.remove('unread');
+                    card.querySelector('.unread-indicator')?.remove();
+                });
+                
+                // Actualizar contador de notificaciones
+                document.querySelector('.notification-badge').textContent = '0';
+            });
+            
+            // Click en notificaciones
+            document.querySelectorAll('.notification-card').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    if(this.classList.contains('unread')) {
+                        this.classList.remove('unread');
+                        this.querySelector('.unread-indicator')?.remove();
+                        
+                        // Actualizar contador
+                        let badge = document.querySelector('.notification-badge');
+                        let count = parseInt(badge.textContent);
+                        badge.textContent = count > 0 ? count - 1 : 0;
+                    }
+                });
+            });
+            
+            // Función para mostrar toasts (notificaciones emergentes)
+            function showToast(title, message = '') {
+                const toastContainer = document.querySelector('.toast-container');
+                const toastId = 'toast-' + Date.now();
+                const toastHTML = `
+                    <div id="${toastId}" class="toast medieval-toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <strong class="me-auto wine-red">${title}</strong>
+                            <small>Ahora</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        ${message ? `<div class="toast-body">${message}</div>` : ''}
+                    </div>
+                `;
+                
+                toastContainer.innerHTML += toastHTML;
+                
+                // Eliminar toast después de 5 segundos
+                setTimeout(function() {
+                    const toast = document.getElementById(toastId);
+                    if(toast) {
+                        toast.classList.remove('show');
+                        setTimeout(() => toast.remove(), 500);
+                    }
+                }, 5000);
+            }
+            
+            // Función para simular solicitud de permisos de notificación push
+            function requestPushPermission() {
+                if ('Notification' in window) {
+                    Notification.requestPermission().then(function(permission) {
+                        if (permission === 'granted') {
+                            showToast('✅ Notificaciones activadas', 'Recibirás alertas sobre promociones y novedades.');
+                        }
+                    });
+                }
+            }
+            
+            // Eventos para interactividad de recomendaciones
+            document.querySelectorAll('.recommendation-card .medieval-btn').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productName = this.closest('.card-body').querySelector('h5').textContent;
+                    showToast('🛒 Añadido al carrito', `${productName} se ha añadido a tu carrito.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
