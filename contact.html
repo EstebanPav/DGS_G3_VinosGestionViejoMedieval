@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-    <title>Bodega Vinos Real - Contacto</title>
+    <title>El Viejo Medieval- Contact</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,109 +12,98 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/modooscuro.css">
 
-    <!-- Carga la fuente después de renderizar los estilos -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
-    <!-- Carga estilos para el mapa -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-<!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
+    <!-- Load map styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
 </head>
 
 <body>
-    <!-- Inicio de la barra superior -->
+    <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
                 <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@bodegavinos.com">info@bodegavinos.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:555-123-4567">555-123-4567</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">096 773 3649</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                    <a class="text-light"
+                        href="https://www.facebook.com/profile.php?id=100069745148743&sk=about_contact_and_basic_info"
+                        target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+
                 </div>
             </div>
         </div>
     </nav>
-    <!-- Fin de la barra superior -->
+    <!-- Close Top Nav -->
 
-    <!-- Cabecera -->
+
+    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Viejo Medieval
+                El Viejo Medieval
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Alternar navegación">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Acerca de</a>
+                            <a class="nav-link" href="contact.html">Contactos</a>
                         </li>
+                        <li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Tienda</a>
+                            <a class="nav-link" href="recomendaciones.html">Reseñas y Recomendaciones</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contacto</a>
+                        <div class="navbar align-self-center d-flex">
+                            <button id="toggle-dark-mode" class="btn btn-outline-light">🌙 Modo Oscuro</button>
+                        </div>
                         </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Buscar ...">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
                             <div class="input-group-text">
                                 <i class="fa fa-fw fa-search"></i>
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                        data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
                     </a>
                 </div>
             </div>
 
         </div>
     </nav>
-    <!-- Fin de la cabecera -->
+    <!-- Close Header -->
 
-    <!-- Modal de búsqueda -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar ...">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
@@ -123,116 +112,116 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </div>
 
-    <!-- Inicio del contenido de la página -->
+
+    <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center">
-            <h1 class="h1">Contáctanos</h1>
+            <h1 class="h1">Contacta con nosotros</h1>
             <p>
-                Bienvenido a El viejo Medieval. Descubre nuestra exclusiva selección de vinos y vive una experiencia única en cada sorbo.
+                Estamos emocionados de presentar nuestro nuevo catálogo de vinos! y grandes promociones! Sumérgete en
+                una experiencia única y déjate llevar por la magia de nuestros vinos. Cada botella cuenta una historia
+                especial que te transportará a lugares únicos con cada sorbo. ¡Descubre la autenticidad y el sabor de El
+                Viejo Medieval
             </p>
         </div>
     </div>
 
-    <!-- Inicio del Mapa -->
+    <!-- Start Map -->
     <div id="mapid" style="width: 100%; height: 300px;"></div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        var mymap = L.map('mapid').setView([-23.013104, -43.394365], 13);
+        document.addEventListener("DOMContentLoaded", function () {
+            var lat = -1.0433248; // Latitud correcta
+            var lon = -78.5929045; // Longitud correcta
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            maxZoom: 18,
-            attribution: 'Bodega Vinos Real | Diseñado por <a href="https://templatemo.com/">TemplateMo</a> | Datos del mapa &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> colaboradores, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imágenes © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(mymap);
+            var mymap = L.map('mapid').setView([lat, lon], 15);
 
-        L.marker([-23.013104, -43.394365]).addTo(mymap)
-            .bindPopup("<b>El Viejo Medieval</b><br />Ubicación.").openPopup();
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            }).addTo(mymap);
 
-        mymap.scrollWheelZoom.disable();
-        mymap.touchZoom.disable();
+            L.marker([lat, lon]).addTo(mymap)
+                .bindPopup("<b>Iglesia de San Miguel de Salcedo</b><br />Ubicación exacta.").openPopup();
+
+            // Habilita el zoom solo en dispositivos móviles
+            if (window.innerWidth > 768) {
+                mymap.scrollWheelZoom.disable();
+                mymap.touchZoom.disable();
+            }
+        });
     </script>
-    <!-- Fin del Mapa -->
+    <!-- End Map -->
 
-    <!-- Inicio del Formulario de Contacto -->
+
+    <!-- Start Contact Form -->
     <div class="container py-5">
-        <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">Nombre</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Nombre">
+        <div class="row">
+            <!-- Formulario de Quejas -->
+            <div class="col-lg-6">
+                <h2 class="h2 text-center">Quejas</h2>
+                <form id="complaintsForm">
+                    <div class="mb-3">
+                        <label for="nombreQueja" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreQueja" name="nombre" required>
                     </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">Correo Electrónico</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Correo Electrónico">
+                    <div class="mb-3">
+                        <label for="emailQueja" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailQueja" name="email" required>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="inputsubject">Asunto</label>
-                    <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Asunto">
-                </div>
-                <div class="mb-3">
-                    <label for="inputmessage">Mensaje</label>
-                    <textarea class="form-control mt-1" id="message" name="message" placeholder="Mensaje" rows="8"></textarea>
-                </div>
-                <div class="row">
-                    <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">Enviar Mensaje</button>
+                    <div class="mb-3">
+                        <label for="asuntoQueja" class="form-label">Asunto</label>
+                        <input type="text" class="form-control" id="asuntoQueja" name="asunto" required>
                     </div>
-                </div>
-            </form>
+                    <div class="mb-3">
+                        <label for="mensajeQueja" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensajeQueja" name="mensaje" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100">Enviar Queja</button>
+                </form>
+            </div>
+
+            <!-- Formulario de Soporte y Preguntas -->
+            <div class="col-lg-6">
+                <h2 class="h2 text-center">Soporte y Preguntas</h2>
+                <form id="supportForm">
+                    <div class="mb-3">
+                        <label for="nombreSoporte" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreSoporte" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailSoporte" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailSoporte" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="asuntoSoporte" class="form-label">Asunto</label>
+                        <input type="text" class="form-control" id="asuntoSoporte" name="asunto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensajeSoporte" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensajeSoporte" name="mensaje" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Solicitar Soporte</button>
+                </form>
+            </div>
         </div>
     </div>
-    <!-- Fin del Formulario de Contacto -->
+    <!-- End Contact Form -->
 
-    <!-- Inicio del Pie de Página -->
+
+    <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">El Viejo Medieval</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                            Calle del Vino 123, 10660
-                        </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:555-123-4567">555-123-4567</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@bodegavinos.com">info@bodegavinos.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Tintos</a></li>
-                        <li><a class="text-decoration-none" href="#">Blancos</a></li>
-                        <li><a class="text-decoration-none" href="#">Rosados</a></li>
-                        <li><a class="text-decoration-none" href="#">Espumosos</a></li>
-                        <li><a class="text-decoration-none" href="#">Vinos Orgánicos</a></li>
-                        <li><a class="text-decoration-none" href="#">Vinos de Reserva</a></li>
-                        <li><a class="text-decoration-none" href="#">Vinos Premium</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Más Información</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Inicio</a></li>
-                        <li><a class="text-decoration-none" href="#">Acerca de</a></li>
-                        <li><a class="text-decoration-none" href="#">Ubicaciones</a></li>
-                        <li><a class="text-decoration-none" href="#">Preguntas Frecuentes</a></li>
-                        <li><a class="text-decoration-none" href="#">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="#">Vino de Frutos Rojos</a></li>
+                        <li><a class="text-decoration-none" href="#">Vino de Uva y Romero</a></li>
+                        <li><a class="text-decoration-none" href="#">Vino de Maracuyá</a></li>
+                        <li><a class="text-decoration-none" href="#">Vino de Mora</a></li>
+                        <li><a class="text-decoration-none" href="#">Vino de Mortiño</a></li>
                     </ul>
                 </div>
 
@@ -245,51 +234,25 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-auto me-auto">
                     <ul class="list-inline text-left footer-icons">
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank"
+                                href="https://www.facebook.com/profile.php?id=100069745148743&sk=about_contact_and_basic_info"><i
+                                    class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Correo electrónico</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Correo electrónico">
-                        <div class="input-group-text btn-success text-light">Suscribirse</div>
-                    </div>
-                </div>
             </div>
         </div>
-
-        <div class="w-100 bg-black py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            Derechos reservados &copy; 2025 El Viejo Medieval | Diseñado por <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </footer>
-    <!-- Fin del Pie de Página -->
+    <!-- End Footer -->
 
-    <!-- Inicio de Scripts -->
+    <!-- Start Script -->
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
-    <!-- Fin de Scripts -->
+    <script src="assets/js/modooscuro.js"></script>
+    <!-- End Script -->
 </body>
 
 </html>
