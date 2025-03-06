@@ -157,31 +157,57 @@
     <!-- Start Contact Form -->
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-6 m-auto">
-                <h2 class="h2 text-center">Contáctanos</h2>
-                <form id="contactForm">
+            <!-- Formulario de Quejas -->
+            <div class="col-lg-6">
+                <h2 class="h2 text-center">Quejas</h2>
+                <form id="complaintsForm">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        <label for="nombreQueja" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreQueja" name="nombre" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="emailQueja" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailQueja" name="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="asunto" class="form-label">Asunto</label>
-                        <input type="text" class="form-control" id="asunto" name="asunto" required>
+                        <label for="asuntoQueja" class="form-label">Asunto</label>
+                        <input type="text" class="form-control" id="asuntoQueja" name="asunto" required>
                     </div>
                     <div class="mb-3">
-                        <label for="mensaje" class="form-label">Mensaje</label>
-                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                        <label for="mensajeQueja" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensajeQueja" name="mensaje" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-success w-100">Enviar</button>
+                    <button type="submit" class="btn btn-danger w-100">Enviar Queja</button>
+                </form>
+            </div>
+
+            <!-- Formulario de Soporte y Preguntas -->
+            <div class="col-lg-6">
+                <h2 class="h2 text-center">Soporte y Preguntas</h2>
+                <form id="supportForm">
+                    <div class="mb-3">
+                        <label for="nombreSoporte" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreSoporte" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailSoporte" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailSoporte" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="asuntoSoporte" class="form-label">Asunto</label>
+                        <input type="text" class="form-control" id="asuntoSoporte" name="asunto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensajeSoporte" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensajeSoporte" name="mensaje" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Solicitar Soporte</button>
                 </form>
             </div>
         </div>
     </div>
     <!-- End Contact Form -->
+
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
